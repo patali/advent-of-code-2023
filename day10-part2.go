@@ -11,6 +11,10 @@ import (
 	"time"
 )
 
+/*
+Raycasting algorithm to check if a point is inside a polygon
+Source: https://www.codingninjas.com/studio/library/check-if-a-point-lies-in-the-interior-of-a-polygon
+*/
 func checkPointInPolygon(inPoint Pos, inPolygon []Pipe) bool {
 	numOfVertices := len(inPolygon)
 	x := inPoint.x
