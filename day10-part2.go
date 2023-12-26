@@ -122,26 +122,14 @@ func RunDay10Part2() {
 		dist++
 	}
 
-	// check if each points is inside or outside the polygon and generate a map
-	distMap := make([][]bool, 0)
-	for y, xList := range maze {
-		row := make([]bool, 0)
-		for x := range xList {
-			if pathContains(cwPath, Pos{x, y}) {
-				row = append(row, false)
-			} else {
-				row = append(row, checkPointInPolygon(Pos{x, y}, cwPath))
-			}
-		}
-		distMap = append(distMap, row)
-	}
-
-	// find number of enclosed points
+	// check if each point of the maze is inside the polygon created by the path
 	found := 0
-	for _, y := range distMap {
-		for _, val := range y {
-			if val {
-				found++
+	for y, xList := range maze {
+		for x := range xList {
+			if !pathContains(cwPath, Pos{x, y}) {
+				if checkPointInPolygon(Pos{x, y}, cwPath) {
+					found++
+				}
 			}
 		}
 	}
@@ -150,5 +138,5 @@ func RunDay10Part2() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Day 10 Part 1 puzzle: Result = ", found)
+	fmt.Println("Day 10 Part 2 puzzle: Result = ", found)
 }
