@@ -17,6 +17,10 @@ type Pos struct {
 	y int
 }
 
+func (p *Pos) Equals(inPos Pos) bool {
+	return p.x == inPos.x && p.y == inPos.y
+}
+
 func processSymbolLocation(inLineNumber int, inLine string, inRegex *regexp.Regexp) []Pos {
 	foundSymbols := inRegex.FindAllStringIndex(inLine, -1)
 	positions := make([]Pos, 0)
