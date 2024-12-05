@@ -18,7 +18,7 @@ func loadUniverse(inpUniverse *[]string, inpGalaxies *[]Cell) {
 	// load the file
 	file, err := os.Open("./input/day11.txt")
 	if err != nil {
-		log.Fatal("Failed to fetch Day x input")
+		log.Fatal("Failed to fetch Day 11 input")
 	}
 	defer file.Close()
 
